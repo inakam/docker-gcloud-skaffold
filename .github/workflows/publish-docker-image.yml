@@ -23,7 +23,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/s12m/gcloud-skaffold
+          images: ghcr.io/inakam/docker-gcloud-skaffold
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
