@@ -1,5 +1,9 @@
-FROM google/cloud-sdk:531.0.0-slim
-LABEL maintainer "Smart Algorithm Co., Ltd. <contact@smartalgorithm.co.jp>"
+# To get docker and docker-buildx dependency on the gcloud :slim image
+FROM docker:28.2.2 as static-docker-source
+FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:slim
+COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=static-docker-source /usr/local/libexec/docker/cli-plugins/docker-buildx /usr/local/libexec/docker/cli-plugins/docker-buildx
+LABEL maintainer "Ibuki Nakamura"
 
 RUN apt-get update -y && \
     apt-get install -y kubectl && \
