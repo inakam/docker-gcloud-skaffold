@@ -1,7 +1,7 @@
 # To get docker and docker-buildx dependency on the gcloud :slim image
 # https://cloud.google.com/sdk/docs/dockerfile_example
 FROM docker:28.3.2 as static-docker-source
-FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:slim
+FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:531.0.0-slim
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
 COPY --from=static-docker-source /usr/local/libexec/docker/cli-plugins/docker-buildx /usr/local/libexec/docker/cli-plugins/docker-buildx
 LABEL maintainer "Ibuki Nakamura"
